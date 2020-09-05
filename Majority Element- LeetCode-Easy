@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        map<int,int> list;
+        int max = 0,res=0;
+        for(int i=0;i<nums.size();i++){
+            if(list.find(nums[i])==list.end()){
+                list.insert(pair<int,int>(nums[i],1));
+            }else{
+                list[nums[i]]++;
+            }
+        }
+        map<int,int>::iterator itr;
+        for(itr= list.begin();itr!=list.end();itr++){
+            if(max<itr->second){
+                max = itr->second;
+                res = itr->first;
+            }
+        }
+        return res;
+    }
+};
