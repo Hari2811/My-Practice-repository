@@ -1,0 +1,34 @@
+vector<int> matchingStrings(vector<string> strings, vector<string> queries) {
+    vector<int> res;
+    int count = 0;
+    map<string,int> m;
+    map<string,int>:: iterator itr;
+    //O(m+n)
+    for(int i=0; (unsigned)i < strings.size();i++){
+        if(m.find(strings[i])!=m.end()){
+            m[strings[i]]++;
+            continue;
+        }
+        m.insert(pair<string,int>(strings[i],1));
+    }
+    for(int j = 0; (unsigned)j<queries.size(); j++){
+        itr = m.find(queries[j]);
+        if(itr==m.end()){
+            res.push_back(0);
+        }
+        else{
+            res.push_back(itr->second);
+        }
+    }
+    // Brute Force - O(m*n)
+    // for(int i =0;i<queries.size();i++){
+    //     count = 0;
+    //     for(int j = 0; j<strings.size();j++){
+    //         if(queries[i] == strings[j]){
+    //             count++;
+    //         }
+    //     }
+    //     res.push_back(count);
+    // }
+    return res;
+}
