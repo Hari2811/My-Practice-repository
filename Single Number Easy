@@ -1,0 +1,11 @@
+int singleNumber(vector<int>& nums) {
+        int res =0;
+        for(int index = 0;index < nums.size();index++){
+            res ^=nums[index];
+        }
+        return res;
+        //XOR property 0^n = n , n^n = 0 (2^2 = 0, 0^3 = 3)
+    }
+    Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+Follow up: Could you implement a solution with a linear runtime complexity and without using extra memory?
